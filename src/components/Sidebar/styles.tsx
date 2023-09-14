@@ -13,11 +13,12 @@ export const Container = styled.nav<{ $isExpanded?: boolean; }>`
   background: ${({ theme }) => theme.colors.gray[900]};
   padding-top:24px;
   border-right: 1px solid rgba(255,255,255,0.07);
-  transition: width 0.3s;
-  width:100px;
+  transition: max-width 0.3s;
+  width:100%;
+  max-width: 100px;
 
   ${({ $isExpanded }) => $isExpanded && css`
-    width: 260px;
+    max-width: 260px;
 
     button img {
       transform: rotateY(0.5turn);
@@ -127,7 +128,6 @@ export const IconContainer = styled.li<{
       white-space: nowrap;
       color: ${({ theme }) => theme.colors.fontColor};
       opacity: 0.7;
-      font-size: 14px;
       visibility: ${({ $isExpanded }) => $isExpanded ? 'visible' : 'hidden'};
     }
   }

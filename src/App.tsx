@@ -5,7 +5,7 @@ import defaultTheme from './assets/styles/themes/default';
 
 import GlobalStyles from './assets/styles/GlobalStyles';
 
-import AppComponent from './components/App';
+import { AppContainer, MainApp } from './components/App';
 
 import Router from './Router';
 import Sidebar from './components/Sidebar';
@@ -16,10 +16,12 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
-        <AppComponent>
+        <AppContainer>
           <Sidebar />
-          <Router />
-        </AppComponent>
+          <MainApp>
+            <Router />
+          </MainApp>
+        </AppContainer>
       </ThemeProvider>
     </BrowserRouter>
   );
