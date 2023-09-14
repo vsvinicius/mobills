@@ -21,26 +21,26 @@ import { ReactComponent as Reports } from '../../assets/icons/graphic.svg';
 import { ReactComponent as Settings } from '../../assets/icons/gear.svg';
 import { ReactComponent as Planning } from '../../assets/icons/flag.svg';
 import { ReactComponent as Transactions } from '../../assets/icons/list.svg';
+import { createRippleEffect } from '../../lib/rippleEffect';
 
 type IconInfo = {
   path: string;
   name: string;
   color?: string;
   Icon: React.FunctionComponent;
-  id: number;
 };
 
 const icons = [
-  { path: 'dashboard', name: 'Dashboard', Icon: Dashboard, id: Math.random() },
-  { path: 'accounts', name: 'Contas', Icon: Accounts, id: Math.random() },
-  { path: 'transactions', name: 'Transações', Icon: Transactions, id: Math.random() },
-  { path: 'cards', color: '#38ADA2', name: 'Cartões de crédito', Icon: Card, id: Math.random() },
-  { path: 'planning', name: 'Planejamento', Icon: Planning, id: Math.random() },
-  { path: 'reports', name: 'Relatórios', Icon: Reports, id: Math.random() },
-  { path: 'settings', name: 'Configurações', Icon: Settings, id: Math.random() },
+  { path: 'dashboard', name: 'Dashboard', Icon: Dashboard },
+  { path: 'accounts', name: 'Contas', Icon: Accounts },
+  { path: 'transactions', name: 'Transações', Icon: Transactions },
+  { path: 'cards', color: '#38ADA2', name: 'Cartões de crédito', Icon: Card },
+  { path: 'planning', name: 'Planejamento', Icon: Planning },
+  { path: 'reports', name: 'Relatórios', Icon: Reports },
+  { path: 'settings', name: 'Configurações', Icon: Settings },
 ] as IconInfo[];
 
-export default function Header() {
+export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [pathname, setPathname] = useState('');
   const location = useLocation();
@@ -67,12 +67,14 @@ export default function Header() {
         <img src={arrow} />
       </ExpandButton>
       <IconsList>
-        {icons.map(({ name, color, Icon, id, path }) =>
+        {icons.map(({ name, color, Icon, path }) =>
           <IconContainer
-            key={id}
+            key={path}
             $color={color}
             $isActive={pathname === path}
             $isExpanded={isExpanded}
+            onClick={createRippleEffect}
+            className='ripple-container'
           >
             <Link to={`/${path}`}>
               <Icon />

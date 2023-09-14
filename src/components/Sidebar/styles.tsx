@@ -11,11 +11,7 @@ const fadeOut = keyframes`
 
 export const Container = styled.nav<{ $isExpanded?: boolean; }>`
   background: ${({ theme }) => theme.colors.gray[900]};
-  float:left;
-  top:0;
-  left:0;
-  z-index: 1;
-  height: 100vh;
+  padding-top:24px;
   border-right: 1px solid rgba(255,255,255,0.07);
   transition: width 0.3s;
   width:100px;
@@ -31,7 +27,8 @@ export const Container = styled.nav<{ $isExpanded?: boolean; }>`
 
 export const Logo = styled.img<{ $shouldHide?: boolean; }>`
   display: block;
-  margin: 24px auto;
+  margin: 0 auto;
+  padding-bottom:8px;
   width: 35px;
   opacity: ${({ $shouldHide }) => $shouldHide ? 0 : 1};
   animation: ${fadeIn} 0.3s;
@@ -44,7 +41,7 @@ export const Logo = styled.img<{ $shouldHide?: boolean; }>`
 
 export const ExpandedLogo = styled.img<{ $shouldHide?: boolean; }>`
   display: block;
-  margin: 24px 0 16px 24px;
+  margin-left:24px;
   width: 8.5rem;
   animation: ${fadeIn} 0.3s;
   
@@ -75,6 +72,7 @@ export const ExpandButton = styled.button<{ $isExpanded?: boolean; }>`
 
 export const IconsList = styled.ul`
   display: flex;
+  margin-top:16px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -102,6 +100,8 @@ export const IconContainer = styled.li<{
         color: ${$color || theme.colors.primary.main} !important;
       }
   `}
+
+
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.08);

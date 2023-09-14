@@ -4,16 +4,22 @@ import { ThemeProvider } from 'styled-components';
 import defaultTheme from './assets/styles/themes/default';
 
 import GlobalStyles from './assets/styles/GlobalStyles';
+
+import AppComponent from './components/App';
+
 import Router from './Router';
-import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 
 function App() {
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
-        <Header />
-        <Router />
+        <AppComponent>
+          <Sidebar />
+          <Router />
+        </AppComponent>
       </ThemeProvider>
     </BrowserRouter>
   );
