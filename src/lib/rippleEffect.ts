@@ -22,7 +22,17 @@ export function createRippleEffect(event: React.MouseEvent<HTMLElement>) {
 
   element.appendChild(circle);
 
-  setTimeout(() => {
-    circle.remove();
-  }, 600);
+  // setTimeout(() => {
+  //   circle.remove();
+  // }, 600);
+}
+
+export function removeRippleEffect(event:React.MouseEvent<HTMLElement>){
+  const element = event.currentTarget;
+  
+  const ripple = element.getElementsByClassName('ripple')[0];
+
+  if (ripple) {
+    ripple.remove();
+  }
 }

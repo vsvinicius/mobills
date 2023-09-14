@@ -6,7 +6,7 @@ export default {
       main: '#7B4DFF',
       light: '#7B4DFF',
       lighter: '#E0E3FF',
-      dark: '#3346F0',
+      dark: '#6515DD',
     },
     success: '00BFA5',
     danger: 'EF5350',

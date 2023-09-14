@@ -16,6 +16,7 @@ export const Calendar = styled.div`
 `;
 
 export const Profile = styled.div`
+  font-weight: bold;
   width:200px;
   height: 50px;
   margin-right: 2rem;
