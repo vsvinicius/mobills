@@ -1,10 +1,10 @@
 export default {
   colors: {
     background: '#1C1C1E',
-    fontColor:'#FFF',
+    fontColor:'#FFFFFF',
     primary: {
-      main: '#5061FC',
-      light: '#6674F4',
+      main: '#7B4DFF',
+      light: '#7B4DFF',
       lighter: '#E0E3FF',
       dark: '#3346F0',
     },
