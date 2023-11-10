@@ -77,7 +77,7 @@ body,#root {
   width: 100%;
   border-radius: 50%;
   transform: scale(0);
-  animation: ${ripple} 1.1s linear forwards;
-  background-color: rgba(255, 255, 255, 0.3);
+  animation: ${ripple} 0.6s linear;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 `;

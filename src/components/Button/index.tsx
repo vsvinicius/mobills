@@ -1,4 +1,4 @@
-import { createRippleEffect, removeRippleEffect } from '../../lib/rippleEffect';
+import { createRippleEffect } from '../../lib/rippleEffect';
 import { ButtonComponent } from './styles';
 
 export default function Button({ children }: { children: React.ReactNode }) {
@@ -6,7 +6,7 @@ export default function Button({ children }: { children: React.ReactNode }) {
     createRippleEffect(e);
   }
   return (
-    <ButtonComponent onMouseDown={handleClick} onMouseUp={removeRippleEffect}>
+    <ButtonComponent onMouseDown={handleClick}>
       {children}
     </ ButtonComponent>
   );

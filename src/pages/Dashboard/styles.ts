@@ -21,6 +21,11 @@ export const Profile = styled.div`
   height: 50px;
   margin-right: 2rem;
 `;
-export const Main = styled.div``;
+
+export const Main = styled.main`
+  margin-left: 20px;
+  margin-right: 20px;
+  `;
+
 export const MonthlyStats = styled.div``;
 export const Button = styled.div``;
