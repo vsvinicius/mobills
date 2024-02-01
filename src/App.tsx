@@ -1,30 +1,10 @@
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import { CssBaseline } from "@mui/material";
 
-import defaultTheme from './assets/styles/themes/default';
-
-import GlobalStyles from './assets/styles/GlobalStyles';
-
-import { AppContainer, MainApp } from './components/App';
-
-import Router from './Router';
-import Sidebar from './components/Sidebar';
-
-function App() {
-
+export default function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={defaultTheme}>
-        <GlobalStyles />
-        <AppContainer>
-          <Sidebar />
-          <MainApp>
-            <Router />
-          </MainApp>
-        </AppContainer>
-      </ThemeProvider>
-    </BrowserRouter>
-  );
+    <div>
+      <CssBaseline />
+      some content
+    </div>
+  )
 }
-
-export default App;
