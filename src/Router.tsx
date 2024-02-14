@@ -1,0 +1,14 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from '@pages/Dashboard';
+
+export default function Router() {
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/accounts" element={<Dashboard />} />
+      <Route path="/transactions" element={<Dashboard />} />
+      <Route path="/credit-cards" element={<Dashboard />} />
+    </Routes>
+  );
+}
