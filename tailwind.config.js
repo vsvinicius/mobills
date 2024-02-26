@@ -4,6 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        white: {
+          DEFAULT: '#FFF',
+          light: 'rgb(255,255,255,0.1)',
+        },
         background: {
           DEFAULT: '#1C1C1E',
           light: '#2C2C2E',
@@ -12,6 +16,9 @@ export default {
           DEFAULT: '#7C4DFF',
           light: '#E0E3FF',
           dark: '#6515DD',
+        },
+        paper: {
+          DEFAULT: '#2C2C2E',
         },
       },
     },
