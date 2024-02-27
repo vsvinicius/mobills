@@ -1,60 +1,69 @@
-import { MoreVert } from '@mui/icons-material';
+import SeeMoreMenu from '@components/SeeMoreMenu';
+import { cn } from '@lib/classnames';
+import formatToCurrency from '@lib/formatToCurrency';
+import { BankAccount } from '@models/BankAccount';
 import {
-  Box,
-  IconButton,
+  Button,
+  Divider,
   MenuItem,
   MenuList,
   Paper,
-  Popover,
   Typography,
 } from '@mui/material';
-import bankIcon from '@assets/images/c6-bank.png';
-import { useState } from 'react';
-export default function AccountItem() {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const isOpen = Boolean(anchorEl);
 
-  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
-    setAnchorEl(event.currentTarget);
-  }
-  function handleClose() {
-    setAnchorEl(null);
-  }
+interface AccountItemProps {
+  bankAccount: BankAccount;
+}
+
+export default function AccountItem({ bankAccount }: AccountItemProps) {
+  const { name, logoSrc, currentBalance, expectedBalance } = bankAccount;
 
   return (
-    <Paper className="h-60 w-[48.95%] grid-rows-5 rounded-3xl p-4 font-bold">
-      <Box className="flex justify-between">
-        <header className="flex items-end gap-2">
+    <Paper className="h-60 w-[48.95%] rounded-3xl font-bold">
+      <header className="flex justify-between p-4 pb-6">
+        <div className="flex items-end gap-2">
           <img
-            src={bankIcon}
+            src={logoSrc}
             alt="bank logo"
             style={{ width: '2rem', borderRadius: '50%' }}
           />
           <Typography variant="h6" className="font-bold opacity-70">
-            Bank name
+            {name}
           </Typography>
-        </header>
-        <IconButton onClick={handleClick}>
-          <MoreVert />
-        </IconButton>
-        <Popover
-          open={isOpen}
-          anchorEl={anchorEl}
-          onClose={handleClose}
-          slotProps={{
-            paper: {
-              className: 'rounded-3xl',
-            },
-          }}
-        >
+        </div>
+        <SeeMoreMenu>
           <MenuList>
             <MenuItem>Editar</MenuItem>
             <MenuItem>Arquivar</MenuItem>
             <MenuItem>Transações</MenuItem>
             <MenuItem>Reajuste de saldo</MenuItem>
           </MenuList>
-        </Popover>
-      </Box>
+        </SeeMoreMenu>
+      </header>
+      <main className="mb-10 grid grid-cols-2 grid-rows-2 gap-y-4 px-4">
+        <Typography className="font-bold">Saldo atual</Typography>
+        <Typography
+          className={cn(
+            'place-self-end font-bold',
+            currentBalance >= 0 ? 'text-green-600' : 'text-red-500',
+          )}
+        >
+          {formatToCurrency(currentBalance)}
+        </Typography>
+        <Typography className="font-bold">Saldo previsto</Typography>
+        <Typography
+          className={cn(
+            'place-self-end font-bold',
+            currentBalance >= 0 ? 'text-green-600' : 'text-red-500',
+          )}
+        >
+          {formatToCurrency(expectedBalance)}
+        </Typography>
+      </main>
+      <Divider />
+      <footer className="mt-2 flex justify-end px-4">
+        <Button className="rounded-full">adicionar despesa</Button>
+      </footer>
     </Paper>
   );
 }

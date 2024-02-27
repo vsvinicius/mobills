@@ -10,6 +10,11 @@ const darkTheme = createTheme({
       xl: 1920,
     },
   },
+  typography: {
+    allVariants: {
+      fontFamily: 'Maven Pro',
+    },
+  },
   palette: {
     mode: 'dark',
     background: {
