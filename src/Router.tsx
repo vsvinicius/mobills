@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from '@pages/Dashboard';
 import BankAccounts from '@pages/BankAccounts';
+import CreditCards from '@pages/CreditCards';
 
 export default function Router() {
   return (
@@ -9,7 +10,7 @@ export default function Router() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/accounts" element={<BankAccounts />} />
       <Route path="/transactions" element={<Dashboard />} />
-      <Route path="/credit-cards" element={<Dashboard />} />
+      <Route path="/credit-cards" element={<CreditCards />} />
     </Routes>
   );
 }

@@ -32,6 +32,7 @@ const MENU_ITEMS = [
     Icon: CreditCardOutlined,
     name: 'Cartões de crédito',
     href: '/credit-cards',
+    color: 'success',
   },
 ];
 
@@ -138,11 +139,11 @@ export default function Sidebar({
         </Button>
 
         <MenuList className="mt-6">
-          {MENU_ITEMS.map(({ Icon, name, href }) => (
+          {MENU_ITEMS.map(({ Icon, name, href, color = 'primary' }) => (
             <MenuItem
               key={name}
               className={cn('flex w-full overflow-hidden border-solid pl-10 ', {
-                'border-l-4 border-solid border-l-primary pl-9':
+                [`border-l-4 border-solid border-l-${color} pl-9`]:
                   pathname === href,
               })}
             >
@@ -150,7 +151,7 @@ export default function Sidebar({
                 to={href}
                 className={cn(
                   'flex h-11 w-full items-center justify-start gap-11 text-white no-underline opacity-70',
-                  { 'text-primary': pathname === href },
+                  { [`text-${color}`]: pathname === href },
                 )}
               >
                 <Icon />

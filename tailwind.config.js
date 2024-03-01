@@ -20,6 +20,10 @@ export default {
         paper: {
           DEFAULT: '#2C2C2E',
         },
+        success: {
+          DEFAULT: '#00BFA5',
+          light: '#1ABCA6',
+        },
       },
     },
   },
