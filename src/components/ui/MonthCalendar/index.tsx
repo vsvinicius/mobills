@@ -1,4 +1,4 @@
-import ArrowIcon from '@components/ArrowIcon';
+import ArrowIcon from '@components/ui/ArrowIcon';
 import { cn } from '@lib/classnames';
 import { ArrowIconPosition } from '@lib/enums';
 import { Box, Button, IconButton, Popover, Typography } from '@mui/material';
@@ -20,7 +20,11 @@ const MONTHS = [
   'dez',
 ];
 
-export default function MonthCalendar() {
+interface MonthCalendarProps {
+  className?: string;
+}
+
+export default function MonthCalendar({ className = '' }: MonthCalendarProps) {
   const [selectedMonth, setSelectedMonth] = useState<number>(dayjs().month());
   const [selectedYear, setSelectedYear] = useState<number>(dayjs().year());
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -42,7 +46,7 @@ export default function MonthCalendar() {
   }
 
   return (
-    <>
+    <div className={className}>
       <Button
         aria-controls={isOpen ? 'basic-menu' : undefined}
         aria-expanded={isOpen ? 'true' : undefined}
@@ -101,6 +105,6 @@ export default function MonthCalendar() {
           </Box>
         </Box>
       </Popover>
-    </>
+    </div>
   );
 }

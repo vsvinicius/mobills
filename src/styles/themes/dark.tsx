@@ -28,6 +28,7 @@ const darkTheme = createTheme({
     },
     success: {
       main: '#00BFA5',
+      light: '#1ABCA6',
     },
     error: {
       main: '#EF5350',
@@ -36,9 +37,6 @@ const darkTheme = createTheme({
       900: '#2C2C2E',
       200: '#BCBCBC',
       100: '#E6E6E6',
-    },
-    text: {
-      primary: '#fff',
     },
   },
 });

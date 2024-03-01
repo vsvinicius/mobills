@@ -11,7 +11,7 @@ import 'dayjs/locale/pt-BR';
 
 import { SidebarSize } from '@lib/enums';
 import darkTheme from '@src/styles/themes/dark';
-import Sidebar from '@components/Sidebar';
+import Sidebar from '@components/ui/Sidebar';
 import Router from '@src/Router';
 
 dayjs.locale('pt-BR');
