@@ -7,14 +7,15 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 
-import 'dayjs/locale/pt-BR';
-
 import { SidebarSize } from '@lib/enums';
 import darkTheme from '@src/styles/themes/dark';
 import Sidebar from '@components/ui/Sidebar';
 import Router from '@src/Router';
 
+require('dayjs/locale/pt-BR');
+
 dayjs.locale('pt-BR');
+
 export default function App() {
   const [sidebarSize, setSidebarSize] = useState<SidebarSize>(SidebarSize.SM);
   function toggleSidebarSize() {
