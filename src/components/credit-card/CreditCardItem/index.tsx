@@ -60,7 +60,7 @@ function CardBody() {
         </Typography>
         <Typography className="font-semibold opacity-70">Fecha em</Typography>
         <Typography className="justify-self-end font-semibold">
-          {dayjs().format('L')}
+          {dayjs().locale('pt-BR').format('L')}
         </Typography>
       </section>
       <section className="my-3">
@@ -95,7 +95,7 @@ export default function CreditCardItem() {
       <CardBody />
       <Divider />
       <footer className="my-2 flex justify-end px-4">
-        <Button className="text-success rounded-full">adicionar despesa</Button>
+        <Button className="rounded-full text-success">adicionar despesa</Button>
       </footer>
     </Card>
   );
