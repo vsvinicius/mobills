@@ -1,24 +1,24 @@
 import { v4 as uuidv4 } from 'uuid';
 
 export enum InvoiceStatus {
-  OPEN = 'open',
   CLOSED = 'closed',
+  OPEN = 'open',
 }
 
 export interface InvoiceInterface {
-  id: string;
-  status: InvoiceStatus;
   chargeAmount: number;
+  id: string;
   paidAmount: number;
+  status: InvoiceStatus;
 }
 
 export class Invoice implements InvoiceInterface {
-  id: string;
-  status: InvoiceStatus;
   chargeAmount: number;
+  id: string;
   paidAmount: number;
+  status: InvoiceStatus;
 
-  constructor({ id, status, chargeAmount, paidAmount }: InvoiceInterface) {
+  constructor({ chargeAmount, id, paidAmount, status }: InvoiceInterface) {
     this.id = id;
     this.status = status;
     this.chargeAmount = chargeAmount;
@@ -28,12 +28,12 @@ export class Invoice implements InvoiceInterface {
 
 export function getMockedInvoice(): Invoice {
   return new Invoice({
+    chargeAmount: Math.random() * 1000,
     id: uuidv4(),
+    paidAmount: Math.random() * 1000,
     status:
       Math.ceil(Math.random() * 10) % 2 === 0
         ? InvoiceStatus.OPEN
         : InvoiceStatus.CLOSED,
-    chargeAmount: Math.random() * 1000,
-    paidAmount: Math.random() * 1000,
   });
 }

@@ -1,6 +1,7 @@
+import { PropsWithChildren, useState } from 'react';
+
 import { MoreVert } from '@mui/icons-material';
 import { IconButton, Popover } from '@mui/material';
-import { PropsWithChildren, useState } from 'react';
 
 interface SeeMoreMenuProps {
   className?: string;
@@ -10,7 +11,7 @@ export default function SeeMoreMenu({
   children,
   className,
 }: PropsWithChildren<SeeMoreMenuProps>) {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const isOpen = Boolean(anchorEl);
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
@@ -21,13 +22,13 @@ export default function SeeMoreMenu({
   }
   return (
     <>
-      <IconButton onClick={handleClick} className={className}>
+      <IconButton className={className} onClick={handleClick}>
         <MoreVert />
       </IconButton>
       <Popover
-        open={isOpen}
         anchorEl={anchorEl}
         onClose={handleClose}
+        open={isOpen}
         slotProps={{
           paper: {
             className: 'rounded-3xl',

@@ -1,37 +1,38 @@
 import { v4 as uuidv4 } from 'uuid';
-import visa from '@assets/icons/visa.svg';
+
 import mastercard from '@assets/icons/mastercard.svg';
+import visa from '@assets/icons/visa.svg';
 import { Invoice, InvoiceStatus, getMockedInvoice } from '@models/Invoice';
 
 enum CreditCardBrand {
-  VISA = 'visa',
   MASTERCARD = 'mastercard',
+  VISA = 'visa',
 }
 
 export interface CreditCardInterface {
-  id: string;
-  name: string;
   brand: CreditCardBrand;
-  limitAmount: number;
   closingDay: number;
+  id: string;
   invoices: Invoice[];
+  limitAmount: number;
+  name: string;
 }
 
 export class CreditCard implements CreditCardInterface {
-  id: string;
-  name: string;
   brand: CreditCardBrand;
-  limitAmount: number;
   closingDay: number;
+  id: string;
   invoices: Invoice[];
+  limitAmount: number;
+  name: string;
 
   constructor({
-    id,
-    name,
     brand,
-    limitAmount,
     closingDay,
+    id,
     invoices,
+    limitAmount,
+    name,
   }: CreditCardInterface) {
     this.id = id;
     this.name = name;
@@ -58,11 +59,9 @@ export class CreditCard implements CreditCardInterface {
 
 export function getMockedCreditCard(): CreditCard {
   return new CreditCard({
-    id: uuidv4(),
-    name: 'Mocked card',
     brand: CreditCardBrand.MASTERCARD,
     closingDay: 2,
-    limitAmount: Math.random() * 10000,
+    id: uuidv4(),
     invoices: [
       getMockedInvoice(),
       getMockedInvoice(),
@@ -71,5 +70,7 @@ export function getMockedCreditCard(): CreditCard {
       getMockedInvoice(),
       getMockedInvoice(),
     ],
+    limitAmount: Math.random() * 10000,
+    name: 'Mocked card',
   });
 }

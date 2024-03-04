@@ -1,16 +1,17 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Dashboard from '@pages/Dashboard';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
 import BankAccounts from '@pages/BankAccounts';
 import CreditCards from '@pages/CreditCards';
+import Dashboard from '@pages/Dashboard';
 
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/dashboard" />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/accounts" element={<BankAccounts />} />
-      <Route path="/transactions" element={<Dashboard />} />
-      <Route path="/credit-cards" element={<CreditCards />} />
+      <Route element={<Navigate to="/dashboard" />} path="/" />
+      <Route element={<Dashboard />} path="/dashboard" />
+      <Route element={<BankAccounts />} path="/accounts" />
+      <Route element={<Dashboard />} path="/transactions" />
+      <Route element={<CreditCards />} path="/credit-cards" />
     </Routes>
   );
 }

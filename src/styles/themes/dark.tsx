@@ -3,40 +3,40 @@ import { createTheme } from '@mui/material/styles';
 const darkTheme = createTheme({
   breakpoints: {
     values: {
-      xs: 320,
-      sm: 768,
-      md: 1024,
       lg: 1440,
+      md: 1024,
+      sm: 768,
       xl: 1920,
-    },
-  },
-  typography: {
-    allVariants: {
-      fontFamily: 'Maven Pro',
+      xs: 320,
     },
   },
   palette: {
-    mode: 'dark',
     background: {
       default: '#1C1C1E',
       paper: '#2C2C2E',
-    },
-    primary: {
-      main: '#7c4dff',
-      light: '#E0E3FF',
-      dark: '#6515DD',
-    },
-    success: {
-      main: '#00BFA5',
-      light: '#1ABCA6',
     },
     error: {
       main: '#EF5350',
     },
     grey: {
-      900: '#2C2C2E',
-      200: '#BCBCBC',
       100: '#E6E6E6',
+      200: '#BCBCBC',
+      900: '#2C2C2E',
+    },
+    mode: 'dark',
+    primary: {
+      dark: '#6515DD',
+      light: '#E0E3FF',
+      main: '#7c4dff',
+    },
+    success: {
+      light: '#1ABCA6',
+      main: '#00BFA5',
+    },
+  },
+  typography: {
+    allVariants: {
+      fontFamily: 'Maven Pro',
     },
   },
 });

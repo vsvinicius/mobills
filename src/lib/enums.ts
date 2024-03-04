@@ -4,8 +4,8 @@ export enum SidebarSize {
 }
 
 export enum ArrowIconPosition {
+  DOWN = 'down',
   LEFT = 'left',
   RIGHT = 'right',
   UP = 'up',
-  DOWN = 'down',
 }
