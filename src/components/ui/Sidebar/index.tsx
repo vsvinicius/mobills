@@ -146,11 +146,13 @@ export default function Sidebar({
               className={cn(
                 'flex w-full overflow-hidden border-solid pl-9 font-medium',
                 {
-                  [`border-l-${color}`]: pathname === href,
                   'border-l-4 border-solid pl-8': pathname === href,
                 },
               )}
               key={name}
+              sx={{
+                ...(pathname === href && { borderLeftColor: `${color}.main` }),
+              }}
             >
               <Link
                 className={cn(
