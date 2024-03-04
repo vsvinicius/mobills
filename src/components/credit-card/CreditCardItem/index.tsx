@@ -1,5 +1,3 @@
-import Card from '@components/ui/Card';
-import SeeMoreMenu from '@components/ui/SeeMoreMenu';
 import {
   Button,
   Divider,
@@ -9,8 +7,11 @@ import {
   Typography,
   linearProgressClasses,
 } from '@mui/material';
-import formatToCurrency from '@lib/formatToCurrency';
 import dayjs from 'dayjs';
+
+import Card from '@components/ui/Card';
+import SeeMoreMenu from '@components/ui/SeeMoreMenu';
+import formatToCurrency from '@lib/formatToCurrency';
 import { CreditCard } from '@models/CreditCard';
 
 interface CreditCardItemProps {
@@ -22,14 +23,14 @@ function CardHeader({ creditCard }: CreditCardItemProps) {
     <header className="flex items-center justify-between p-4">
       <div className="flex items-end gap-2">
         <img
-          src={creditCard.brandIcon}
           alt="bank logo"
+          src={creditCard.brandIcon}
           style={{
-            width: '2rem',
             borderRadius: '50%',
+            width: '2rem',
           }}
         />
-        <Typography variant="h6" className="font-bold opacity-70">
+        <Typography className="font-bold opacity-70" variant="h6">
           {creditCard.name}
         </Typography>
       </div>
@@ -70,12 +71,10 @@ function CardBody({ creditCard }: CreditCardItemProps) {
       </section>
       <section className="my-3">
         <Typography
-          variant="body2"
           className="font-medium opacity-70"
+          variant="body2"
         >{`${formatToCurrency(creditCard.usedAmount)} de ${formatToCurrency(creditCard.limitAmount)}`}</Typography>
         <LinearProgress
-          variant="determinate"
-          value={(creditCard.usedAmount / creditCard.limitAmount) * 100}
           className="h-4 rounded-full bg-white"
           color="success"
           sx={{
@@ -83,10 +82,12 @@ function CardBody({ creditCard }: CreditCardItemProps) {
               borderRadius: 5,
             },
           }}
+          value={(creditCard.usedAmount / creditCard.limitAmount) * 100}
+          variant="determinate"
         />
         <Typography
-          variant="body2"
           className="mt-1 font-medium opacity-70"
+          variant="body2"
         >{`Limite disponível de ${formatToCurrency(creditCard.limitAmount - creditCard.usedAmount)}`}</Typography>
       </section>
     </main>

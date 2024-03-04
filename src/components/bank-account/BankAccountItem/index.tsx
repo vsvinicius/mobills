@@ -1,9 +1,10 @@
+import { Button, Divider, MenuItem, MenuList, Typography } from '@mui/material';
+
 import Card from '@components/ui/Card';
 import SeeMoreMenu from '@components/ui/SeeMoreMenu';
 import { cn } from '@lib/classnames';
 import formatToCurrency from '@lib/formatToCurrency';
 import { BankAccount } from '@models/BankAccount';
-import { Button, Divider, MenuItem, MenuList, Typography } from '@mui/material';
 
 interface AccountItemProps {
   bankAccount: BankAccount;
@@ -14,11 +15,11 @@ function CardHeader({ bankAccount: { logoSrc, name } }: AccountItemProps) {
     <header className="flex justify-between p-4 pb-6">
       <div className="flex items-end gap-2">
         <img
-          src={logoSrc}
           alt="bank logo"
-          style={{ width: '2rem', borderRadius: '50%' }}
+          src={logoSrc}
+          style={{ borderRadius: '50%', width: '2rem' }}
         />
-        <Typography variant="h6" className="font-bold opacity-70">
+        <Typography className="font-bold opacity-70" variant="h6">
           {name}
         </Typography>
       </div>

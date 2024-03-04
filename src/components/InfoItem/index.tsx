@@ -1,18 +1,19 @@
-import { cn } from '@lib/classnames';
 import { Paper, Typography } from '@mui/material';
 
+import { cn } from '@lib/classnames';
+
 interface InfoItemProps {
-  title: React.ReactNode | string;
-  value: React.ReactNode | string;
   icon: React.ReactNode;
   iconClassName?: string;
+  title: React.ReactNode | string;
+  value: React.ReactNode | string;
 }
 
 export default function InfoItem({
-  title,
-  value,
   icon,
   iconClassName,
+  title,
+  value,
 }: InfoItemProps) {
   return (
     <Paper className="grid h-24 w-full grid-cols-2 rounded-3xl p-4">
@@ -26,7 +27,7 @@ export default function InfoItem({
             title
           )}
         </div>
-        <Typography variant="h6" className="font-semibold">
+        <Typography className="font-semibold" variant="h6">
           {value}
         </Typography>
       </main>

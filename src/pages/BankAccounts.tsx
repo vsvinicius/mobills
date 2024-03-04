@@ -1,5 +1,3 @@
-import AccountItem from '@components/bank-account/BankAccountItem';
-import MonthCalendar from '@components/ui/MonthCalendar';
 import {
   Add,
   LocalAtmOutlined,
@@ -8,11 +6,13 @@ import {
 } from '@mui/icons-material';
 import { IconButton, MenuItem, MenuList, Typography } from '@mui/material';
 
+import InfoItem from '@components/InfoItem';
+import AccountItem from '@components/bank-account/BankAccountItem';
 import ArrowIcon from '@components/ui/ArrowIcon';
+import Card from '@components/ui/Card';
+import MonthCalendar from '@components/ui/MonthCalendar';
 import SeeMoreMenu from '@components/ui/SeeMoreMenu';
 import { getMockedBankAccount } from '@models/BankAccount';
-import Card from '@components/ui/Card';
-import InfoItem from '@components/InfoItem';
 
 const mockedBankAccounts = [
   getMockedBankAccount(),
@@ -27,7 +27,7 @@ export default function BankAccounts() {
       <header className="flex h-40 flex-col justify-between">
         <MonthCalendar className="flex justify-center" />
         <div className="mb-4 flex justify-between">
-          <Typography variant="h4" className="font-semibold">
+          <Typography className="font-semibold" variant="h4">
             Contas
           </Typography>
           <div className="flex gap-3">
@@ -53,17 +53,18 @@ export default function BankAccounts() {
               <div className="flex h-16 w-16 items-center justify-center rounded-[50%] border border-solid">
                 <Add />
               </div>
-              <Typography variant="h6" fontWeight="bold">
+              <Typography fontWeight="bold" variant="h6">
                 Nova conta
               </Typography>
             </div>
           </Card>
           {mockedBankAccounts.map((bankAccount) => (
-            <AccountItem key={bankAccount.id} bankAccount={bankAccount} />
+            <AccountItem bankAccount={bankAccount} key={bankAccount.id} />
           ))}
         </section>
         <section className="flex h-full w-[90%] flex-col gap-4 justify-self-end">
           <InfoItem
+            icon={<PaidOutlined />}
             title={
               <div className="flex gap-1">
                 <Typography className="text-nowrap font-medium opacity-70">
@@ -73,9 +74,9 @@ export default function BankAccounts() {
               </div>
             }
             value={56450}
-            icon={<PaidOutlined />}
           />
           <InfoItem
+            icon={<LocalAtmOutlined />}
             title={
               <div className="flex gap-1">
                 <Typography className="text-nowrap font-medium opacity-70">
@@ -85,7 +86,6 @@ export default function BankAccounts() {
               </div>
             }
             value={56450}
-            icon={<LocalAtmOutlined />}
           />
         </section>
       </main>

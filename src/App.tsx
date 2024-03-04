@@ -1,20 +1,16 @@
 import { useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
-import { BrowserRouter } from 'react-router-dom';
 import { Box, StyledEngineProvider } from '@mui/system';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-// import dayjs from 'dayjs';
 
-import { SidebarSize } from '@lib/enums';
-import darkTheme from '@src/styles/themes/dark';
 import Sidebar from '@components/ui/Sidebar';
+import { SidebarSize } from '@lib/enums';
 import Router from '@src/Router';
-
-// import 'dayjs/locale/pt-BR';
-
-// dayjs.locale('pt-BR');
+import darkTheme from '@src/styles/themes/dark';
 
 export default function App() {
   const [sidebarSize, setSidebarSize] = useState<SidebarSize>(SidebarSize.SM);
@@ -28,8 +24,8 @@ export default function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={darkTheme}>
           <LocalizationProvider
-            dateAdapter={AdapterDayjs}
             adapterLocale="pt-BR"
+            dateAdapter={AdapterDayjs}
           >
             <CssBaseline />
             <div className="flex">
@@ -37,8 +33,8 @@ export default function App() {
               <Box
                 sx={{
                   minHeight: '100vh',
-                  width: `calc(100% - ${sidebarSize})`,
                   transition: 'width 300ms ease-in-out',
+                  width: `calc(100% - ${sidebarSize})`,
                 }}
               >
                 <Router />

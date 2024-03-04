@@ -1,5 +1,6 @@
-import { cn } from '@lib/classnames';
 import { Paper } from '@mui/material';
+
+import { cn } from '@lib/classnames';
 
 interface CardProps {
   children: React.ReactNode;
