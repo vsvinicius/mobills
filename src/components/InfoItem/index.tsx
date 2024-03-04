@@ -1,10 +1,9 @@
 import { cn } from '@lib/classnames';
-import formatToCurrency from '@lib/formatToCurrency';
 import { Paper, Typography } from '@mui/material';
 
 interface InfoItemProps {
   title: React.ReactNode | string;
-  value: number;
+  value: React.ReactNode | string;
   icon: React.ReactNode;
   iconClassName?: string;
 }
@@ -28,7 +27,7 @@ export default function InfoItem({
           )}
         </div>
         <Typography variant="h6" className="font-semibold">
-          {formatToCurrency(value)}
+          {value}
         </Typography>
       </main>
       <div

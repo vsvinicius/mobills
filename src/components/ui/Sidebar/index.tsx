@@ -142,10 +142,13 @@ export default function Sidebar({
           {MENU_ITEMS.map(({ Icon, name, href, color = 'primary' }) => (
             <MenuItem
               key={name}
-              className={cn('flex w-full overflow-hidden border-solid pl-10 ', {
-                [`border-l-4 border-solid border-l-${color} pl-9`]:
-                  pathname === href,
-              })}
+              className={cn(
+                'flex w-full overflow-hidden border-solid pl-9 font-medium',
+                {
+                  'border-l-4 border-solid pl-8': pathname === href,
+                  [`border-l-${color}`]: pathname === href,
+                },
+              )}
             >
               <Link
                 to={href}
