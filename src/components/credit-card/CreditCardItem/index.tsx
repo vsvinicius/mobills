@@ -9,19 +9,20 @@ import {
   Typography,
   linearProgressClasses,
 } from '@mui/material';
-// import visa from '@assets/icons/visa.svg';
-import mastercard from '@assets/icons/mastercard.svg';
 import formatToCurrency from '@lib/formatToCurrency';
 import dayjs from 'dayjs';
+import { CreditCard } from '@models/CreditCard';
 
-// interface CreditCardItemProps {}
+interface CreditCardItemProps {
+  creditCard: CreditCard;
+}
 
-function CardHeader() {
+function CardHeader({ creditCard }: CreditCardItemProps) {
   return (
     <header className="flex items-center justify-between p-4">
       <div className="flex items-end gap-2">
         <img
-          src={mastercard}
+          src={creditCard.brandIcon}
           alt="bank logo"
           style={{
             width: '2rem',
@@ -29,7 +30,7 @@ function CardHeader() {
           }}
         />
         <Typography variant="h6" className="font-bold opacity-70">
-          Credit card name
+          {creditCard.name}
         </Typography>
       </div>
       <SeeMoreMenu>
@@ -45,7 +46,11 @@ function CardHeader() {
   );
 }
 
-function CardBody() {
+function CardBody({ creditCard }: CreditCardItemProps) {
+  const closingDate = dayjs()
+    .set('date', creditCard.closingDay)
+    .locale('pt-BR')
+    .format('L');
   return (
     <main className="px-4">
       <section className="grid grid-cols-2 items-end gap-y-2">
@@ -56,21 +61,21 @@ function CardBody() {
           Valor parcial
         </Typography>
         <Typography className="justify-self-end font-semibold text-red-500">
-          {formatToCurrency(132.45)}
+          {formatToCurrency(creditCard.usedAmount)}
         </Typography>
         <Typography className="font-semibold opacity-70">Fecha em</Typography>
         <Typography className="justify-self-end font-semibold">
-          {dayjs().locale('pt-BR').format('L')}
+          {closingDate}
         </Typography>
       </section>
       <section className="my-3">
         <Typography
           variant="body2"
           className="font-medium opacity-70"
-        >{`${formatToCurrency(500)} de ${formatToCurrency(1000)}`}</Typography>
+        >{`${formatToCurrency(creditCard.usedAmount)} de ${formatToCurrency(creditCard.limitAmount)}`}</Typography>
         <LinearProgress
           variant="determinate"
-          value={47}
+          value={(creditCard.usedAmount / creditCard.limitAmount) * 100}
           className="h-4 rounded-full bg-white"
           color="success"
           sx={{
@@ -82,17 +87,17 @@ function CardBody() {
         <Typography
           variant="body2"
           className="mt-1 font-medium opacity-70"
-        >{`Limite disponível de ${formatToCurrency(1500)}`}</Typography>
+        >{`Limite disponível de ${formatToCurrency(creditCard.limitAmount - creditCard.usedAmount)}`}</Typography>
       </section>
     </main>
   );
 }
 
-export default function CreditCardItem() {
+export default function CreditCardItem({ creditCard }: CreditCardItemProps) {
   return (
     <Card>
-      <CardHeader />
-      <CardBody />
+      <CardHeader creditCard={creditCard} />
+      <CardBody creditCard={creditCard} />
       <Divider />
       <footer className="my-2 flex justify-end px-4">
         <Button className="rounded-full text-success">adicionar despesa</Button>

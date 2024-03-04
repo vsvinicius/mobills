@@ -3,6 +3,9 @@ import CreditCardItem from '@components/credit-card/CreditCardItem';
 import Card from '@components/ui/Card';
 import SeeMoreMenu from '@components/ui/SeeMoreMenu';
 import SwitchButton from '@components/ui/SwitchButton';
+import { getMockedCreditCard } from '@models/CreditCard';
+import formatToCurrency from '@lib/formatToCurrency';
+
 import {
   Add,
   CreditCardOutlined,
@@ -10,6 +13,13 @@ import {
   MonetizationOnOutlined,
 } from '@mui/icons-material';
 import { IconButton, MenuItem, MenuList, Typography } from '@mui/material';
+
+const CREDIT_CARDS = [
+  getMockedCreditCard(),
+  getMockedCreditCard(),
+  getMockedCreditCard(),
+  getMockedCreditCard(),
+];
 
 export default function CreditCards() {
   return (
@@ -24,10 +34,10 @@ export default function CreditCards() {
             buttonNames={['Faturas abertas', 'Faturas fechadas']}
             onChangeButton={() => null}
           />
-          <IconButton className="bg-paper text-success w-12">
+          <IconButton className="w-12 bg-paper text-success">
             <Add />
           </IconButton>
-          <SeeMoreMenu className="bg-paper w-12">
+          <SeeMoreMenu className="w-12 bg-paper">
             <MenuList>
               <MenuItem>Cartões arquivados</MenuItem>
               <MenuItem>Tipo de visualização</MenuItem>
@@ -37,7 +47,7 @@ export default function CreditCards() {
       </header>
       <main className="grid grid-cols-3">
         <div className="col-start-1 col-end-3 grid grid-cols-2 gap-3">
-          <Card className="text-success h-[19rem]">
+          <Card className="h-[19rem] text-success">
             <div className="flex h-full cursor-pointer flex-col items-center justify-center gap-4 hover:opacity-60">
               <div className="flex h-16 w-16 items-center justify-center rounded-[50%] border border-solid">
                 <Add />
@@ -47,29 +57,26 @@ export default function CreditCards() {
               </Typography>
             </div>
           </Card>
-          <CreditCardItem />
-          <CreditCardItem />
-          <CreditCardItem />
-          <CreditCardItem />
-          <CreditCardItem />
-          <CreditCardItem />
+          {CREDIT_CARDS.map((creditCard) => (
+            <CreditCardItem creditCard={creditCard} />
+          ))}
         </div>
         <section className="col-start-3 row-start-1 flex h-full w-[80%] flex-col gap-4 justify-self-end">
           <InfoItem
             title="Melhor cartão para comprar"
-            value={56450}
+            value={CREDIT_CARDS[0].name}
             icon={<CreditCardOutlined />}
             iconClassName="bg-success"
           />
           <InfoItem
             title="Limite disponível"
-            value={56450}
+            value={formatToCurrency(56450)}
             icon={<MonetizationOnOutlined />}
             iconClassName="bg-success"
           />
           <InfoItem
             title="Valor total"
-            value={56450}
+            value={formatToCurrency(56450)}
             icon={<LocalAtmOutlined />}
             iconClassName="bg-success"
           />
