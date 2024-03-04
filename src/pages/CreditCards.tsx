@@ -47,7 +47,7 @@ export default function CreditCards() {
       </header>
       <main className="grid grid-cols-3">
         <div className="col-start-1 col-end-3 grid grid-cols-2 gap-3">
-          <Card className="h-[19rem] text-success">
+          <Card className="text-success">
             <div className="flex h-full cursor-pointer flex-col items-center justify-center gap-4 hover:opacity-60">
               <div className="flex h-16 w-16 items-center justify-center rounded-[50%] border border-solid">
                 <Add />
@@ -58,7 +58,7 @@ export default function CreditCards() {
             </div>
           </Card>
           {CREDIT_CARDS.map((creditCard) => (
-            <CreditCardItem creditCard={creditCard} />
+            <CreditCardItem creditCard={creditCard} key={creditCard.id} />
           ))}
         </div>
         <section className="col-start-3 row-start-1 flex h-full w-[80%] flex-col gap-4 justify-self-end">
