@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   AccountBalanceOutlined,
@@ -8,7 +8,7 @@ import {
   FormatListBulleted,
   HomeOutlined,
 } from '@mui/icons-material';
-import { Drawer, MenuItem, MenuList, Typography } from '@mui/material';
+import { Box, Drawer, MenuItem, MenuList, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
 import logoBars from '@assets/images/logo-bars.svg';
@@ -43,6 +43,7 @@ export default function Sidebar({
   size,
 }: Readonly<SidebarProps>) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   return (
     <Drawer
@@ -150,20 +151,20 @@ export default function Sidebar({
                 },
               )}
               key={name}
+              onClick={() => navigate(href)}
               sx={{
                 ...(pathname === href && { borderLeftColor: `${color}.main` }),
               }}
             >
-              <Link
+              <Box
                 className={cn(
                   'flex h-11 w-full items-center justify-start gap-11 text-white no-underline opacity-70',
                   { [`text-${color}`]: pathname === href },
                 )}
-                to={href}
               >
                 <Icon />
                 {name}
-              </Link>
+              </Box>
             </MenuItem>
           ))}
         </MenuList>

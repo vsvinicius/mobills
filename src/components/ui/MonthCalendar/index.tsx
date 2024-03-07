@@ -67,6 +67,7 @@ export default function MonthCalendar({ className = '' }: MonthCalendarProps) {
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     setAnchorEl(event.currentTarget);
   }
+
   function handleClose() {
     setAnchorEl(null);
   }
